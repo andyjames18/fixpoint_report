@@ -81,8 +81,7 @@
         <option>62314 URBAN 4X4</option>
         <option>63217 DOUBLE PONY</option>
         <option>63218 TRAIN CAROUSEL</option>
-        <option>63219 TAGADA</option>
-        <option>... [rest of your machines] ...</option>
+        <option>... [you can paste the rest of the machines here] ...</option>
       </select>
 
       <label for="name">Your Name:</label>
@@ -103,12 +102,38 @@
     <footer>FixPoint Ltd</footer>
   </div>
 
-  <script>
-    document.getElementById('faultForm').addEventListener('submit', function(e) {
+  <!-- ✅ Supabase integration -->
+  <script type="module">
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+    const supabaseUrl = 'https://ekzpwrmmbcqgsxqhtzwu.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVrenB3cm1tYmNxZ3N4cWh0end1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTEyMjcwNzAsImV4cCI6MjA2NjgwMzA3MH0.Ty9g17yf8k_3wv-I8LEhSHLwe0W3kAWc_hJks-ZiEV0';
+
+    const supabase = createClient(supabaseUrl, supabaseKey);
+
+    const form = document.getElementById('faultForm');
+    const confirmation = document.getElementById('confirmation');
+
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      // Replace with actual submission logic
-      document.getElementById('faultForm').reset();
-      document.getElementById('confirmation').style.display = 'block';
+
+      const data = {
+        machine: form.machine.value,
+        name: form.name.value,
+        notes: form.notes.value,
+        off_time: form.offTime.value,
+        date: form.date.value
+      };
+
+      const { error } = await supabase.from('reports').insert([data]);
+
+      if (error) {
+        alert('Something went wrong. Please try again.');
+        console.error(error);
+      } else {
+        form.reset();
+        confirmation.style.display = 'block';
+      }
     });
   </script>
 </body>
