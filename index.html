@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FixPoint Report Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        body { font-family: Arial, sans-serif; background: #fff; color: #b00000; padding: 20px; }
+        .container { max-width: 500px; margin: auto; border: 1px solid #ccc; padding: 20px; }
+        h1 { text-align: center; }
+        label, input, textarea, select, button { width: 100%; margin-top: 10px; }
+        .logo { display: block; margin: 0 auto 20px auto; max-width: 150px; }
+        .footer { margin-top: 20px; text-align: center; font-size: 0.9em; color: #555; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="logo.png" alt="FixPoint Logo" class="logo" />
+        <h1>Report a Fault</h1>
+        <form onsubmit="handleSubmit(event)">
+            <label for="machine">Machine:</label>
+            <select id="machine" required>
+                <option value="">Select machine</option>
+                <option value="Machine A">Machine A</option>
+                <option value="Machine B">Machine B</option>
+                <option value="Machine C">Machine C</option>
+            </select>
+
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" required />
+
+            <label for="notes">Fault Description / Notes:</label>
+            <textarea id="notes" rows="4"></textarea>
+
+            <label for="parts">Parts Ordered (if any):</label>
+            <input type="text" id="parts" />
+
+            <label for="off">Power Off Time:</label>
+            <input type="time" id="off" />
+
+            <label for="on">Power On Time:</label>
+            <input type="time" id="on" />
+
+            <button type="submit">Submit Report</button>
+        </form>
+        <div id="confirmation" style="display:none; margin-top:20px; text-align:center;">
+            <strong>Report submitted</strong>
+        </div>
+        <div class="footer">FixPoint Ltd</div>
+    </div>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            document.getElementById('confirmation').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
