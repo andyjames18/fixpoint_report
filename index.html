@@ -1,132 +1,124 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>FixPoint Report Form</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style>
-        body { font-family: Arial, sans-serif; background: #fff; color: #b00000; padding: 20px; }
-        .container { max-width: 500px; margin: auto; border: 1px solid #ccc; padding: 20px; }
-        h1 { text-align: center; }
-        label, input, textarea, select, button { width: 100%; margin-top: 10px; }
-        .logo { display: block; margin: 0 auto 20px auto; max-width: 150px; }
-        .footer { margin-top: 20px; text-align: center; font-size: 0.9em; color: #555; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FixPoint - Report a Fault</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #ffffff;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      border-radius: 8px;
+      background: #f9f9f9;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .logo {
+      display: block;
+      margin: 0 auto 10px;
+      max-width: 150px;
+    }
+    h1 {
+      text-align: center;
+      color: #c10000;
+    }
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: bold;
+    }
+    select, input[type="text"], input[type="time"], input[type="date"], textarea, button {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      background: #c10000;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #a00000;
+    }
+    .submitted {
+      display: none;
+      color: green;
+      text-align: center;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+    footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #777;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-       <img src="logo.png" alt="FixPoint Logo" width="150">
-        <h1>Report a Fault</h1>
-        <form onsubmit="handleSubmit(event)">
-            <label for="machine">Machine:</label>
-            <select id="machine" required>
-                <option value="">Select machine</option>
-                <option value="Machine ">20168  LIGHTNING MCQUEEN</option>
-                <option value="Machine ">60086  COOL SCOOP</option>
-                <option value="Machine ">62314  URBAN 4X4</option>
-             <option value="Machine ">63217  DOUBLE PONY</option>
-               <option value="Machine ">63218  TRAIN CAROUSEL</option>
-               <option value="Machine ">63219  TAGADA</option>
-              <option value="Machine ">60033  SKILL CUT</option>
-             <option value="Machine ">60068  ROCKET LAUNCH</option>
-            <option value="Machine ">62313  SPACE DROP XL</option>
-           <option value="Machine ">63209  KEY MASTER</option>
-          <option value="Machine ">60038  SKILL CUT</option>
-          <option value="Machine ">60069  COOL BOY/HAPPY MINER</option>
-        <option value="Machine ">6250  SKILLBALL ZINGY 2</option>
-       <option value="Machine ">63269  SKILLBALL ZINGY 2</option>
-      <option value="Machine ">63270  SKILLBALL ZINGY 2</option>
-       <option value="Machine ">63271  SKILLBALL ZINGY 2</option>
-       <option value="Machine ">60290  DISCAPA VEND</option>
-        <option value="Machine ">62313  CHUPA STAIRWAY</option>
-        <option value="Machine ">63277  CANDY CRANE</option>
-       <option value="Machine ">60046  TOMY GOLD VENDOR</option>
-        <option value="Machine ">60047  TOMY GOLD VENDOR</option>
-         <option value="Machine ">60050  GRAND PRIZE</option>
-        <option value="Machine ">60078  ANIMAL KAISER PLUS</option>
-        <option value="Machine ">60079  ANIMAL KAISER PLUS</option>
-        <option value="Machine ">60080  ANIMAL KAISER PLUS</option>
-       <option value="Machine ">60081  ANIMAL KAISER PLUS</option>
-       <option value="Machine ">60098  PIXEL PIX</option>
-      <option value="Machine ">63214  CHUPA STAIRWAY</option>
-      <option value="Machine ">63278  TOY TOWN</option>
-      <option value="Machine ">60022  TONS OF TICKETS</option>
-      <option value="Machine ">60027  TROLLS</option>
-     <option value="Machine ">60029  BALL MADNESS 2PLY</option>
-    <option value="Machine ">60037  HOOP IT UP</option>
-    <option value="Machine ">60048  HUNGRY HIPPOS 4PLY</option>
-    <option value="Machine ">60082  SPONGE BOB PIRATES</option>
-    <option value="Machine ">60095  WORLD FOOTBALL PRO</option>
-    <option value="Machine ">60099  TOWER ISLAND 2PLY</option>
-   <option value="Machine ">60277  COUNT DRACULA ARENA</option>
-    <option value="Machine ">60278  COUNT DRACULA ARENA</option>
-    <option value="Machine ">60279  COUNT DRACULA ARENA</option>
-   <option value="Machine ">60280  COUNT DRACULA ARENA</option>
-   <option value="Machine ">63275  TICKEY BOO</option>
-   <option value="Machine ">63276  TICKEY BOO</option>
-   <option value="Machine ">63288  COUNT DRACULA 3 PLY</option>
-  <option value="Machine ">63289  COUNT DRACULA 3 PLY</option>
-  <option value="Machine ">63290  COUNT DRACULA 3 PLY</option>
-  <option value="Machine ">7513  TEMPLE OF TICKETS</option>
-  <option value="Machine ">7514  TEMPLE OF TICKETS</option>
-  <option value="Machine ">7515  TEMPLE OF TICKETS</option>
-  <option value="Machine ">2297  MONOPOLY ROLL AND GO</option>
-  <option value="Machine ">2298  POWER ROLL</option>
-  <option value="Machine ">60041  CONNECT 4 HOOPS HD</option>
-  <option value="Machine ">60053  PEARL FISHERY 3PLY</option>
-  <option value="Machine ">60057  PACMAN ROLLER</option>
-  <option value="Machine ">60058  PACMAN ROLLER</option>
-  <option value="Machine ">60061  BULLSEYE CRACK SHOT</option>
-  <option value="Machine ">60066  MARVEL AVENGERS 2 PL</option>
-  <option value="Machine ">60087  DERBY DAY 4PLY</option>
-  <option value="Machine ">60088  BEAR FOOTBALL</option>
-  <option value="Machine ">60097  ANGRY BIRDS BOOM</option>
-  <option value="Machine ">60216  POWER DROP EXTREME</option>
-  <option value="Machine ">60218  DC COMICS 4PLY</option>
-  <option value="Machine ">60219  DRACULA ROLLDOWN 4PL</option>
-   <option value="Machine ">60245  WHACK N WIN</option>
- <option value="Machine ">60259  DOWN THE CLOWN</option>
-  <option value="Machine ">60260  DOWN THE CLOWN</option>
-  <option value="Machine ">62312  BOWLING CHAMP</option>
-  <option value="Machine ">62317  DUCK DERBY</option>
-   <option value="Machine ">62318  DUCK DERBY</option>
-  <option value="Machine ">62319  SMURFS 2PLY</option>
-  <option value="Machine ">63210  COPS AND ROBBERS ROL</option>
-  <option value="Machine ">63255  SPINNER FRENZY</option>
-  <option value="Machine ">63257  SPACE INVADERS FRENC</option>
-  <option value="Machine ">63259  SCOOBY MYSTERY WHEEL</option>
-               
+  <div class="container">
+    <img src="https://your-logo-link.com/logo.png" alt="FixPoint Logo" class="logo" />
+    <h1>Report a Fault</h1>
+    <form id="faultForm">
+      <label for="machine">Machine:</label>
+      <select id="machine" name="machine" required>
+        <option value="">Select machine</option>
+        <option>20168 LIGHTNING MCQUEEN</option>
+        <option>60086 COOL SCOOP</option>
+        <option>62314 URBAN 4X4</option>
+        <option>63217 DOUBLE PONY</option>
+        <option>63218 TRAIN CAROUSEL</option>
+        <option>63219 TAGADA</option>
+        <option>60033 SKILL CUT</option>
+        <option>60068 ROCKET LAUNCH</option>
+        <option>62313 SPACE DROP XL</option>
+        <option>63209 KEY MASTER</option>
+        <option>60038 SKILL CUT</option>
+        <option>60069 COOL BOY/HAPPY MINER</option>
+        <option>6250 SKILLBALL ZINGY 2</option>
+        <option>63269 SKILLBALL ZINGY 2</option>
+        <option>63270 SKILLBALL ZINGY 2</option>
+        <option>63271 SKILLBALL ZINGY 2</option>
+        <option>... [add all other machines from your list here] ...</option>
+      </select>
 
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" name="name" required />
 
- 
-            </select>
+      <label for="notes">Fault Description / Notes:</label>
+      <textarea id="notes" name="notes" rows="4" required></textarea>
 
-            <label for="name">Your Name:</label>
-            <input type="text" id="name" required />
+      <label for="offTime">Power Off Time:</label>
+      <input type="time" id="offTime" name="offTime" required />
 
-            <label for="notes">Fault Description / Notes:</label>
-            <textarea id="notes" rows="4"></textarea>
+      <label for="date">Date:</label>
+      <input type="date" id="date" name="date" required />
 
-      
+      <button type="submit">Submit Report</button>
+    </form>
+    <div class="submitted" id="confirmation">✅ Report submitted</div>
+    <footer>FixPoint Ltd</footer>
+  </div>
 
-            <label for="off">Power Off Time:</label>
-            <input type="time" id="off" />
-
-        <label for="Date">Date:</label>
-            <input type="text" id="Date" required />
-            <button type="submit">Submit Report</button>
-        </form>
-        <div id="confirmation" style="display:none; margin-top:20px; text-align:center;">
-            <strong>Report submitted</strong>
-        </div>
-        <div class="footer">FixPoint Ltd</div>
-    </div>
-
-    <script>
-        function handleSubmit(event) {
-            event.preventDefault();
-            document.getElementById('confirmation').style.display = 'block';
-        }
-    </script>
+  <script>
+    document.getElementById('faultForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      // You can replace this with your actual form submission logic (e.g. Supabase/Backend call)
+      document.getElementById('faultForm').reset();
+      document.getElementById('confirmation').style.display = 'block';
+    });
+  </script>
 </body>
 </html>
