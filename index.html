@@ -22,8 +22,9 @@
     }
     .logo {
       display: block;
-      margin: 0 auto 10px;
-      max-width: 150px;
+      margin: 0 auto 20px;
+      max-width: 180px;
+      height: auto;
     }
     h1 {
       text-align: center;
@@ -69,7 +70,7 @@
 </head>
 <body>
   <div class="container">
-    <img src="https://your-logo-link.com/logo.png" alt="FixPoint Logo" class="logo" />
+    <img src="/44EC1233-3400-4C62-BD27-30146EAED4F5.png" alt="FixPoint Logo" class="logo" />
     <h1>Report a Fault</h1>
     <form id="faultForm">
       <label for="machine">Machine:</label>
@@ -81,17 +82,7 @@
         <option>63217 DOUBLE PONY</option>
         <option>63218 TRAIN CAROUSEL</option>
         <option>63219 TAGADA</option>
-        <option>60033 SKILL CUT</option>
-        <option>60068 ROCKET LAUNCH</option>
-        <option>62313 SPACE DROP XL</option>
-        <option>63209 KEY MASTER</option>
-        <option>60038 SKILL CUT</option>
-        <option>60069 COOL BOY/HAPPY MINER</option>
-        <option>6250 SKILLBALL ZINGY 2</option>
-        <option>63269 SKILLBALL ZINGY 2</option>
-        <option>63270 SKILLBALL ZINGY 2</option>
-        <option>63271 SKILLBALL ZINGY 2</option>
-        <option>... [add all other machines from your list here] ...</option>
+        <option>... [rest of your machines] ...</option>
       </select>
 
       <label for="name">Your Name:</label>
@@ -115,7 +106,7 @@
   <script>
     document.getElementById('faultForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      // You can replace this with your actual form submission logic (e.g. Supabase/Backend call)
+      // Replace with actual submission logic
       document.getElementById('faultForm').reset();
       document.getElementById('confirmation').style.display = 'block';
     });
