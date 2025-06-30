@@ -3,25 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FixPoint Fault Report</title>
+  <title>FixPoint - Report a Fault</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="container">
+  <div class="form-container">
     <img src="44EC1233-3400-4C62-BD27-30146EAED4F5.png" alt="FixPoint Logo" class="logo" />
-    <h1>Report a Fault</h1>
+    <h2>Report a Fault</h2>
     <form id="reportForm">
       <label for="machine">Machine</label>
-      <input type="text" id="machine" name="machine" placeholder="Enter machine name or number" required />
+      <input type="text" id="machine" name="machine" required placeholder="Machine name or number" />
 
       <label for="description">Fault Description</label>
-      <textarea id="description" name="description" required></textarea>
+      <textarea id="description" name="description" rows="4" required></textarea>
 
-      <label for="powerOff">Power Off Time</label>
-      <input type="time" id="powerOff" name="powerOff" required />
-
-      <label for="date">Date</label>
-      <input type="date" id="date" name="date" required />
+      <div class="inline-inputs">
+        <div>
+          <label for="powerOff">Power Off Time</label>
+          <input type="time" id="powerOff" name="powerOff" required />
+        </div>
+        <div>
+          <label for="date">Date</label>
+          <input type="date" id="date" name="date" required />
+        </div>
+      </div>
 
       <label for="reporter">Your Name</label>
       <input type="text" id="reporter" name="reporter" required />
@@ -29,10 +34,11 @@
       <label for="image">Attach a Photo (optional)</label>
       <input type="file" id="image" accept="image/*" capture="environment" />
 
-      <button type="submit">Submit Report</button>
+      <button type="submit">Submit</button>
+      <p id="successMessage" class="hidden">Report submitted successfully!</p>
     </form>
-    <p id="successMessage" class="hidden">Report submitted successfully!</p>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   <script src="script.js"></script>
 </body>
 </html>
