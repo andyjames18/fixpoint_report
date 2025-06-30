@@ -1,59 +1,82 @@
-const SUPABASE_URL = 'https://ekzpwrmmbcqgsxqhtzwu.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVrenB3cm1tYmNxZ3N4cWh0end1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTEyMjcwNzAsImV4cCI6MjA2NjgwMzA3MH0.Ty9g17yf8k_3wv-I8LEhSHLwe0W3kAWc_hJks-ZiEV0';
+body {
+  font-family: Arial, sans-serif;
+  background: #fff;
+  margin: 0;
+  padding: 0;
+}
 
-const { createClient } = supabase;
-const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+.form-container {
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+  text-align: left;
+}
 
-document.getElementById('reportForm').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const form = e.target;
+.logo {
+  width: 120px;
+  display: block;
+  margin: 10px auto 20px;
+}
 
-  const machine = form.machine.value.trim();
-  const description = form.description.value.trim();
-  const powerOff = form.powerOff.value;
-  const date = form.date.value;
-  const reporter = form.reporter.value.trim();
-  const imageFile = document.getElementById('image').files[0];
+h2 {
+  text-align: center;
+  color: #d62828;
+}
 
-  let imageUrl = null;
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
 
-  if (imageFile) {
-    const fileExt = imageFile.name.split('.').pop();
-    const filePath = `reports/${Date.now()}.${fileExt}`;
+input[type="text"],
+input[type="time"],
+input[type="date"],
+textarea,
+input[type="file"] {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
 
-    const { data: storageData, error: storageError } = await supabase.storage
-      .from('report-images')
-      .upload(filePath, imageFile);
+textarea {
+  resize: vertical;
+}
 
-    if (storageError) {
-      alert('Image upload failed.');
-      return;
-    }
+.inline-inputs {
+  display: flex;
+  gap: 10px;
+}
 
-    const { data: publicURL } = supabase
-      .storage
-      .from('report-images')
-      .getPublicUrl(filePath);
+.inline-inputs > div {
+  flex: 1;
+}
 
-    imageUrl = publicURL.publicUrl;
-  }
+button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 10px;
+  background-color: #d62828;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+}
 
-  const { error } = await supabase.from('reports').insert([
-    {
-      machine,
-      description,
-      power_off_time: powerOff,
-      date,
-      reporter,
-      image_url: imageUrl,
-    }
-  ]);
+button:hover {
+  background-color: #a61c1c;
+}
 
-  if (error) {
-    alert('Error submitting report');
-    return;
-  }
+.hidden {
+  display: none;
+}
 
-  form.reset();
-  document.getElementById('successMessage').classList.remove('hidden');
-});
+#successMessage {
+  margin-top: 15px;
+  text-align: center;
+  color: green;
+}
+
